@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts= Post::all();
+        return ($posts);
     }
 
     /**
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+            //
     }
 
     /**
@@ -35,7 +36,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newPost= new Post();
+        return ($)
     }
 
     /**
@@ -69,7 +71,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+
     }
 
     /**
