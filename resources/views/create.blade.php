@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('form')
-   
+
 
             <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('store') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -35,7 +35,7 @@
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                            
+
                             <div class="col-md-6">
                                 <input  type="text" class="form-control" name="name" required>
 
@@ -66,7 +66,7 @@
                             <input type="checkbox" name="isSitter" class="mt-3 ml-2" style="max-width: 20px;">
                         </div>
 
-                        
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

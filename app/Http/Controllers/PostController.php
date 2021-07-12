@@ -38,17 +38,17 @@ class PostController extends Controller
     {
         $post = Post::create([
             "title"=>$request->title,
-            "description"=>$request->,
+            "description"=>$request->description,
             "date"=>$request->date,
-            "hour"=>$request->hour,
-            "course_link"=>$request->course_link,
-            "num_max"=>$request->num_max,
-            "favorite"=>$request->has('favorite'),
-            "description"=>$request->description
+            "name"=>$request->name,
+            "comments"=>$request->comments,
+            "image"=>$request->image,
+            "isSitter"=>$request->has('isSitter')
+
         ]);
-        $course->save();
+        $post->save();
         return redirect()->route('home');
-    } 
+    }
 
     /**
      * Display the specified resource.
@@ -90,8 +90,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        Post::find($id)->delete();
+        return redirect()->route('home');
     }
 }

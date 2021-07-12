@@ -13,9 +13,11 @@
                 <li>{{$post->comments}}</li>
                 <li>{{$post->image}}</li>
                 <li>{{$post->isSitter}}</li>
+                <a href="{{ route('store',['id'=>$post->id]) }}">delete</a>
             </ul>
+
         </div>
-        
+
     @endforeach
 </div>
 @endsection

@@ -26,3 +26,6 @@ Route::get('/home', [App\Http\Controllers\PostController::class, 'index'])->name
 Route::get('/create', [App\Http\Controllers\PostController::class, 'create'])->name('create');
 
 Route::post('/create', [App\Http\Controllers\PostController::class, 'store'])->name('store');
+
+Route::post('/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('delete');
+
