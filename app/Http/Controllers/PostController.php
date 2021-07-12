@@ -36,8 +36,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        /* $newPost= new Post();
-        return ($)*/
+        $post = Post::create([
+            "title"=>$request->title,
+            "description"=>$request->,
+            "date"=>$request->date,
+            "hour"=>$request->hour,
+            "course_link"=>$request->course_link,
+            "num_max"=>$request->num_max,
+            "favorite"=>$request->has('favorite'),
+            "description"=>$request->description
+        ]);
+        $course->save();
+        return redirect()->route('home');
     } 
 
     /**
