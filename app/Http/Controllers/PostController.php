@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $posts= Post::all();
-        return ($posts);
+        return view('home', ['posts' => $posts]);
     }
 
     /**
@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-            //
+            return view('create');
     }
 
     /**
@@ -36,9 +36,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $newPost= new Post();
-        return ($)
-    }
+        /* $newPost= new Post();
+        return ($)*/
+    } 
 
     /**
      * Display the specified resource.
