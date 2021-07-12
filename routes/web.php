@@ -27,5 +27,5 @@ Route::get('/create', [App\Http\Controllers\PostController::class, 'create'])->n
 
 Route::post('/create', [App\Http\Controllers\PostController::class, 'store'])->name('store');
 
-Route::post('/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('delete');
+Route::get('/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('delete');
 
