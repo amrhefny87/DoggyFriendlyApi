@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-     //PostDog::factory(10)->create();
+        PostDog::factory(10)->create();
      PostSitter::factory(10)->create();
     }
 }
