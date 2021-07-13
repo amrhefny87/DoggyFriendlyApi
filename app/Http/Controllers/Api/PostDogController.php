@@ -17,4 +17,22 @@ class PostDogController extends Controller
     {
         return response()->json(PostDog::all(), 200);
     }
+
+    public function create(Request $request)
+    {
+
+        $post = PostDog::create([
+            "title" => $request->title,
+            "description" => $request->description,
+            "date" => $request->date,
+            "name" => $request->name,
+            "comments" => $request->comments,
+            "image" => $request->image,
+            
+
+        ]);
+        $post->save();
+        return response()->json(PostDog::all(), 200);
+        
+    }
 }
