@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\PostDog;
+use App\Models\PostSitter;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-     PostDog::factory(10)->create();
+     //PostDog::factory(10)->create();
+     PostSitter::factory(10)->create();
     }
 }

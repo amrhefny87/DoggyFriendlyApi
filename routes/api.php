@@ -4,6 +4,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostDogController;
+use App\Http\Controllers\Api\PostSitterController;
 
 
 
@@ -23,5 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/postdogs', [PostDogController::class, "index"]);
+Route::get('/postsitters', [PostSitterController::class, "index"]);
 
 
