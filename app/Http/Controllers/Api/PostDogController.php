@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Models\PostDog;
 use Illuminate\Http\Request;
 
 class PostDogController extends Controller
@@ -15,7 +15,7 @@ class PostDogController extends Controller
      */
     public function index()
     {
-        $posts= Post::all();
+        $posts= PostDog::all();
         return ($posts);
     }
 }
