@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PostDog extends Model
 {
     use HasFactory;
-    
+
     protected $fillable=[
         'title',
         'description',
@@ -16,5 +16,6 @@ class PostDog extends Model
         'name',
         'comments',
         'image',
+        
     ];
 }
