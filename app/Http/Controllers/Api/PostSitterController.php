@@ -15,8 +15,7 @@ class PostSitterController extends Controller
      */
     public function index()
     {
-        $posts= PostSitter::all();
-        return ($posts);
+        return response()->json(PostSitter::all(), 200);
     }
 
     /**

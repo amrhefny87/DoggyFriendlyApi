@@ -15,7 +15,6 @@ class PostDogController extends Controller
      */
     public function index()
     {
-        $posts= PostDog::all();
-        return ($posts);
+        return response()->json(PostDog::all(), 200);
     }
 }
