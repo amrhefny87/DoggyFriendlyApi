@@ -23,64 +23,42 @@ class PostSitterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        $post = PostSitter::create([
+            "title" => $request->title,
+            "description" => $request->description,
+            "date" => $request->date,
+            "name" => $request->name,
+            "comments" => $request->comments,
+            "image" => $request->image,
+            
+
+        ]);
+        $post->save();
+        return response()->json(PostSitter::all(), 200);
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function edit (Request $request, $id) {
+        $post = PostSitter::whereId($id);
+    
+        $post->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "date" => $request->date,
+            "name" => $request->name,
+            "comments" => $request->comments,
+            "image" => $request->image,
+        ]);
+        return response()->json(PostSitter::all(), 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\postSitter  $postSitter
-     * @return \Illuminate\Http\Response
-     */
-    public function show(postSitter $postSitter)
+    public function destroy($id)
     {
-        //
+        PostSitter::find($id)->delete();
+        return response()->json(PostSitter::all(), 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\postSitter  $postSitter
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(postSitter $postSitter)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\postSitter  $postSitter
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, postSitter $postSitter)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\postSitter  $postSitter
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(postSitter $postSitter)
-    {
-        //
-    }
+    
 }

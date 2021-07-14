@@ -35,4 +35,24 @@ class PostDogController extends Controller
         return response()->json(PostDog::all(), 200);
         
     }
+
+    public function edit (Request $request, $id) {
+        $post = PostDog::whereId($id);
+    
+        $post->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "date" => $request->date,
+            "name" => $request->name,
+            "comments" => $request->comments,
+            "image" => $request->image,
+        ]);
+        return response()->json(PostDog::all(), 200);
+    }
+
+    public function destroy($id)
+    {
+        PostDog::find($id)->delete();
+        return response()->json(PostDog::all(), 200);
+    }
 }
