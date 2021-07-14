@@ -25,5 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/postdogs', [PostDogController::class, "index"]);
 Route::get('/postsitters', [PostSitterController::class, "index"]);
+Route::post('/postsitters', [PostSitterController::class, "index"]);
+Route::delete('/postsitters', [PostSitterController::class, "index"]);
 
 
