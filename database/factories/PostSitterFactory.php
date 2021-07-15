@@ -24,7 +24,7 @@ class PostSitterFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'description' => $this->faker->realText(),
-            'image' => $this->faker->image(),
+            'image' => "https://www.collinsdictionary.com/images/thumb/dog_230497594_250.jpg?version=4.0.166",
             'date' => $this->faker->dateTime(),
             'name' => $this->faker-> name(),
             'comments' => $this->faker->realText()
