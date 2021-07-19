@@ -23,15 +23,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Public routes
 Route::get('/postdogs', [PostDogController::class, "index"]);
-Route::post('/postdogs', [PostDogController::class, "create"]);
-Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
-Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
+//Route::post('/postdogs', [PostDogController::class, "create"]);
+//Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
+//Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
 
 Route::get('/postsitters', [PostSitterController::class, "index"]);
-Route::post('/postsitters', [PostSitterController::class, "create"]);
-Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
-Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
+//Route::post('/postsitters', [PostSitterController::class, "create"]);
+//Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
+//Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
 
+
+//Protected routes
+Route::group (['middleware' => ['auth:sanctum']], function () {
+    Route::post('/postdogs', [PostDogController::class, "create"]);
+    Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
+    Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
+
+    Route::post('/postsitters', [PostSitterController::class, "create"]);
+    Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
+    Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
+    
+});
 
 
