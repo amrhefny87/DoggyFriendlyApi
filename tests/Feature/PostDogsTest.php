@@ -31,18 +31,18 @@ class PostDogsTest extends TestCase
 
         $response = $this->post('/api/postdogs' , [
             "title" => "test title",
-            "description"=> "chris is the coder wonderfull",
+            "description"=> "test description",
             "date" => "1991-10-11 11:31:25",
             "name" => "Hannah Haley I",
             "comments"=> "el futuro es para nosotros",
-            "image" => "amr.png"
+            "image" => "image.png"
         ]);
 
         $response->assertOk();
         $this->assertCount(1, PostDog::all());
 
         $this->assertEquals(PostDog::first()->title,'test title');
-        $this->assertEquals(PostDog::first()->image,'amr.png');
+        $this->assertEquals(PostDog::first()->image,'image.png');
 
     }
 
@@ -53,10 +53,11 @@ class PostDogsTest extends TestCase
         ]);
 
         $response = $this->get('/api/postdogs');
-
+        //dd($response);
         $this->assertCount(1, PostDog::all());
         
         $response = $this->delete('/api/postdogs/1');
+        //dd($response);
         $this->assertCount(0, PostDog::all());
 
     }
@@ -64,8 +65,12 @@ class PostDogsTest extends TestCase
     public function test_CheckIfPostDogCanBeUpdated(){
         PostDog::factory(1)->create([
             'id'=> 1,
-            'title' => 'thierno'
+            'title' => 'title 1'
         ]);
+
+        $response = $this->get('/api/postdogs');
+        //dd($response);
+        $this->assertCount(1, PostDog::all());
 
         $response = $this->put('/api/postdogs/1', [
             "title" => "test title",
@@ -75,6 +80,7 @@ class PostDogsTest extends TestCase
             "comments"=> "el futuro es para nosotros",
             "image" => "image.png"
         ]);
+        //dd($response);
         
         $this->assertEquals(PostDog::first()->title,'test title');
 

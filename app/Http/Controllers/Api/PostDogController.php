@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\PostDog;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostDogController extends Controller
 {
@@ -31,6 +32,7 @@ class PostDogController extends Controller
             
 
         ]);
+
         $post->save();
         return response()->json(PostDog::all(), 200);
         
@@ -38,7 +40,8 @@ class PostDogController extends Controller
 
     public function edit (Request $request, $id) {
         $post = PostDog::whereId($id);
-    
+        
+        
         $post->update([
             "title" => $request->title,
             "description" => $request->description,
