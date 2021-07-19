@@ -22,5 +22,28 @@ class UserController extends Controller
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
+
+        $token = $user->createToken('token')->plainTextToken;
+
+        $response = [
+            'user'=>$user,
+            'token'=>$token,
+
+        ];
+
+        return response($response, 201);
+    }
+
+    public function logout (Request $request) {
+        
+        auth()->user()->tokens()->delete();
+
+        return [
+            'message' => "logged out"
+        ]
+    ;
+
+        
+
     }
 }

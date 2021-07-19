@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostDogController;
 use App\Http\Controllers\Api\PostSitterController;
+use App\Http\Controllers\Api\UserController;
 
 
 
@@ -24,6 +25,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Public routes
+
+Route::post('/register', [UserController::class, "register"]);
+
+
 Route::get('/postdogs', [PostDogController::class, "index"]);
 //Route::post('/postdogs', [PostDogController::class, "create"]);
 //Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
@@ -45,6 +50,7 @@ Route::group (['middleware' => ['auth:sanctum']], function () {
     Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
     Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
     
+    Route::post('/logout', [UserController::class, "logout"]);
 });
 
 
