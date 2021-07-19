@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostDogController;
 use App\Http\Controllers\Api\PostSitterController;
+use App\Http\Controllers\Api\UserController;
 
 
 
@@ -19,24 +20,17 @@ use App\Http\Controllers\Api\PostSitterController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 //Public routes
-Route::get('/postdogs', [PostDogController::class, "index"]);
-//Route::post('/postdogs', [PostDogController::class, "create"]);
-//Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
-//Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
 
+Route::post('/register', [UserController::class, "register"]);
+Route::post('/login', [UserController::class, "login"]);
+
+Route::get('/postdogs', [PostDogController::class, "index"]);
 Route::get('/postsitters', [PostSitterController::class, "index"]);
-//Route::post('/postsitters', [PostSitterController::class, "create"]);
-//Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
-//Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
 
 
 //Protected routes
-Route::group (['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/postdogs', [PostDogController::class, "create"]);
     Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
     Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
@@ -45,6 +39,7 @@ Route::group (['middleware' => ['auth:sanctum']], function () {
     Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
     Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
     
+    Route::post('/logout', [UserController::class, "logout"]);
 });
 
 
