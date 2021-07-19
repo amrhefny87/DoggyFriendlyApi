@@ -22,5 +22,7 @@ class UserController extends Controller
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
+
+        
     }
 }
