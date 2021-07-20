@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\PostDog;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostDogController extends Controller
 {
@@ -20,6 +22,7 @@ class PostDogController extends Controller
 
     public function create(Request $request)
     {
+        //$user = User::find(Auth::id());
 
         $post = PostDog::create([
             "title" => $request->title,
@@ -28,7 +31,7 @@ class PostDogController extends Controller
             "name" => $request->name,
             "comments" => $request->comments,
             "image" => $request->image,
-            
+            "user_id" => User::find(Auth::id())->id
 
         ]);
         $post->save();
