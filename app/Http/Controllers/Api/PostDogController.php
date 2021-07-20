@@ -34,6 +34,7 @@ class PostDogController extends Controller
             "user_id" => User::find(Auth::id())->id
 
         ]);
+
         $post->save();
         return response()->json(PostDog::all(), 200);
         
@@ -41,7 +42,8 @@ class PostDogController extends Controller
 
     public function edit (Request $request, $id) {
         $post = PostDog::whereId($id);
-    
+        
+        
         $post->update([
             "title" => $request->title,
             "description" => $request->description,
