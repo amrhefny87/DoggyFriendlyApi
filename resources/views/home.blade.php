@@ -13,7 +13,7 @@
                 <li>{{$post->comments}}</li>
                 <li>{{$post->image}}</li>
                 <li>{{$post->isSitter}}</li>
-                <a href="{{ route('delete',['id'=>$post->id]) }}">delete</a>
+                <a href="{{ route('delete',['id'=>$post->id]) }}">Delete</a>
             </ul>
 
         </div>
