@@ -31,13 +31,15 @@ class PostDogController extends Controller
             "name" => $request->name,
             "comments" => $request->comments,
             "image" => $request->image,
+            
             "user_id" => User::find(Auth::id())->id
 
         ]);
 
         $post->save();
+        //$user=User::find(Auth::id())->id;
         return response()->json(PostDog::all(), 200);
-        
+        //return ($user);
     }
 
     public function edit (Request $request, $id) {

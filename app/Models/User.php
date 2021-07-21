@@ -23,6 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'direction',
+        'image',
+        'pet_name',
+        'about_us'
+
     ];
 
     /**
@@ -45,6 +50,10 @@ class User extends Authenticatable
     ];
 
     public function postDogs(){
-        return $this->hasMany(PostDog::class);
+        return $this->hasOne(PostDog::class);
+    }
+
+    public function postSitters(){
+        return $this->hasOne(PostSitter::class);
     }
 }
