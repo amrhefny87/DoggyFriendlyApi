@@ -35,6 +35,7 @@ Route::get('/postsitters', [PostSitterController::class, "index"]);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users', [UserController::class, "index"]);
     Route::put('/users/{id}', [UserController::class, "edit_profile"]);
+    
     Route::post('/postdogs', [PostDogController::class, "create"]);
     Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
     Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
