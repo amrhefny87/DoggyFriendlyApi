@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -68,5 +69,25 @@ class UserController extends Controller
             'message' => "logged out"
         ];
 
+    }
+
+    public function index() {
+        return response()->json(User::all(), 200);
+    }
+    
+    public function edit_profile (Request $request, $id) {
+        $id = User::find(Auth::id())->id;
+        $user = User::find(Auth::id());
+        
+        
+        $user->update([
+            "name" => $request->name,
+            "password" => $request->password,
+            "image" => $request->image,
+            "direction" => $request->direction,
+            "pet_name" => $request->pet_name,
+            "about_us" => $request->about_us,
+        ]);
+        return response()->json(User::all(), 200);
     }
 }
