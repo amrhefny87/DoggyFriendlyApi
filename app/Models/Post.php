@@ -11,9 +11,11 @@ class Post extends Model
         protected $fillable=[
             'title',
             'description',
-            'image' ,
-            'date',
+            'date' ,
             'name',
-            'comments'
+            'comments',
+            'image',
+            'isSitter'
         ];
 }
+

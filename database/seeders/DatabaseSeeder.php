@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\PostDog;
+use App\Models\PostSitter;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-     Post::factory(10)->create();
+        PostDog::factory(10)->create();
+        PostSitter::factory(10)->create();
+        User::factory(10)->create(['password' => 'password' ]);
     }
 }

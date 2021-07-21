@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\PostDog;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostDogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts= Post::all();
-        return view('home', ['posts' => $posts]);
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-            return view('create');
+        //
     }
 
     /**
@@ -36,27 +35,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::create([
-            "title"=>$request->title,
-            "description"=>$request->description,
-            "date"=>$request->date,
-            "name"=>$request->name,
-            "comments"=>$request->comments,
-            "image"=>$request->image,
-            "isSitter"=>$request->has('isSitter')
-
-        ]);
-        $post->save();
-        return redirect()->route('home');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\PostDog  $postDog
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(PostDog $postDog)
     {
         //
     }
@@ -64,10 +52,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\PostDog  $postDog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(PostDog $postDog)
     {
         //
     }
@@ -76,23 +64,22 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\PostDog  $postDog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, PostDog $postDog)
     {
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\PostDog  $postDog
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PostDog $postDog)
     {
-        Post::find($id)->delete();
-        return redirect()->route('home');
+        //
     }
 }
