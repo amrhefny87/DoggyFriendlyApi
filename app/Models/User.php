@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function postDogs(){
-        return $this->hasMany(PostDog::class);
+        return $this->hasOne(PostDog::class);
     }
 }
