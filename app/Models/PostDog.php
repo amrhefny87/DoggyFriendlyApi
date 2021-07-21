@@ -18,6 +18,7 @@ class PostDog extends Model
         'name',
         'comments',
         'image',
+        'user_id'
     ];
 
     public function user(){
