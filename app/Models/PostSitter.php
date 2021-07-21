@@ -15,5 +15,10 @@ class PostSitter extends Model
         'name',
         'comments',
         'image',
+        'user_id'
     ];
+    
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
