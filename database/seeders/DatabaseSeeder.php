@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         PostDog::factory(10)->create();
         PostSitter::factory(10)->create();
-        User::factory(10)->create(['password' => 'password' ]);
+        User::factory(10)->create();
     }
 }
