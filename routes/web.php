@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
 
 
 /*
@@ -29,4 +30,6 @@ Route::get('/create', [App\Http\Controllers\PostController::class, 'create'])->n
 Route::post('/create', [App\Http\Controllers\PostController::class, 'store'])->name('store');
 
 Route::get('/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('delete');
+
+Route::get('/user/{id}', [UserController::class, "show"]);
 
