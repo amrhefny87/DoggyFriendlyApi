@@ -90,4 +90,10 @@ class UserController extends Controller
         ]);
         return response()->json(User::all(), 200);
     }
+
+    public function show($id) {
+        $user = User::find($id);
+
+        return response()->json($user, 200);
+    }
 }

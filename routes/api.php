@@ -34,6 +34,7 @@ Route::get('/postsitters', [PostSitterController::class, "index"]);
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users', [UserController::class, "index"]);
+    Route::get('/user/{id}', [UserController::class, "show"]);
     Route::put('/users/{id}', [UserController::class, "edit_profile"]);
     
     Route::post('/postdogs', [PostDogController::class, "create"]);
