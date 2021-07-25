@@ -55,22 +55,17 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">image</label>
 
                             <div class="col-md-6">
-                                <input  type="text" class="form-control" name="image" required>
+                                <input  type="file" class="form-control" name="image" required>
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="isSitter">
-                                isSitter
-                            </label>
-                            <input type="checkbox" name="isSitter" class="mt-3 ml-2" style="max-width: 20px;">
-                        </div>
+                
 
 
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-outline-light">
+                                <button type="submit" class="btn btn-outline-success">
                                     Create Course
                                 </button>
                                 <button type="submit" class="btn btn-outline-danger">

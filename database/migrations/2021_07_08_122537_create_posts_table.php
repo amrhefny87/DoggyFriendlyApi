@@ -22,8 +22,6 @@ class CreatePostsTable extends Migration
             $table->string('name');
             $table->string('comments');
             $table->string('image');
-            $table->boolean('isSitter')->default(false);
-
 
         });
     }

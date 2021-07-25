@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         PostDog::factory(10)->create();
         PostSitter::factory(10)->create();
+        Post::factory(10)->create();
         
     }
 }

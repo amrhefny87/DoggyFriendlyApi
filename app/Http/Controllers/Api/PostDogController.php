@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use App\Models\PostDog;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostDogController extends Controller
 {
@@ -36,6 +37,11 @@ class PostDogController extends Controller
 
         ]);
 
+        if ($request->hasFile('image')){
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+
+
         $post->save();
         //$user=User::find(Auth::id())->id;
         return response()->json(PostDog::all(), 200);
@@ -54,6 +60,11 @@ class PostDogController extends Controller
             "comments" => $request->comments,
             "image" => $request->image,
         ]);
+
+        if ($request->hasFile('image')){
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+        
         return response()->json(PostDog::all(), 200);
     }
 
@@ -62,4 +73,12 @@ class PostDogController extends Controller
         PostDog::find($id)->delete();
         return response()->json(PostDog::all(), 200);
     }
+
+    /* public function image($id){
+        $post = PostDog::find($id);
+        $image = Storage::disk('public')->url($post->image);
+
+
+        return response()->json($image, 200);
+    } */
 }

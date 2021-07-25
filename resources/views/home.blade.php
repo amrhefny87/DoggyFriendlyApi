@@ -11,8 +11,7 @@
                 <li>{{$post->date}}</li>
                 <li>{{$post->name}}</li>
                 <li>{{$post->comments}}</li>
-                <li>{{$post->image}}</li>
-                <li>{{$post->isSitter}}</li>
+                <li><img src="{{ asset('storage').'/'.$post->image }}" width="100" alt=""></li>
                 <a href="{{ route('delete',['id'=>$post->id]) }}">Delete</a>
             </ul>
 

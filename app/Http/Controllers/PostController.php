@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -25,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-            return view('create');
+        return view('createImages');
     }
 
     /**
@@ -36,6 +37,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        
         $post = Post::create([
             "title"=>$request->title,
             "description"=>$request->description,
@@ -43,9 +45,14 @@ class PostController extends Controller
             "name"=>$request->name,
             "comments"=>$request->comments,
             "image"=>$request->image,
-            "isSitter"=>$request->has('isSitter')
 
         ]);
+
+        if ($request->hasFile('image')){
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+
+        
         $post->save();
         return redirect()->route('home');
     }
@@ -67,9 +74,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('edit', compact('post'));
     }
 
     /**
@@ -79,9 +87,27 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-
+        
+        if ($request->hasFile('image')){
+            Storage::delete('public/'.Post::findOrFail($id)->image);
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+        
+        $post = Post::whereId($id);
+        
+        $post->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "date" => $request->date,
+            "name" => $request->name,
+            "comments" => $request->comments,
+            "image" => $request->image,
+        ]);
+        
+    
+        return redirect()->route('home');
     }
 
     /**
