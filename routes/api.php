@@ -22,30 +22,30 @@ use App\Http\Controllers\Api\UserController;
 
 //Public routes
 
-Route::post('/register', [UserController::class, "register"]);
-Route::post('/login', [UserController::class, "login"]);
+Route::post('/register', [UserController::class, "register"])->name('register');
+Route::post('/login', [UserController::class, "login"])->name('login');
 
-Route::get('/postdogs', [PostDogController::class, "index"]);
-Route::get('/postsitters', [PostSitterController::class, "index"]);
+Route::get('/postdogs', [PostDogController::class, "index"])->name('postdogs');
+Route::get('/postsitters', [PostSitterController::class, "index"])->name('postsitters');
 
 
 
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/users', [UserController::class, "index"]);
-    Route::get('/user/{id}', [UserController::class, "show"]);
-    Route::put('/users/{id}', [UserController::class, "edit_profile"]);
+    Route::get('/users', [UserController::class, "index"])->name('users');
+    Route::get('/user/{id}', [UserController::class, "show"])->name('user');
+    Route::patch('/users/{id}', [UserController::class, "edit_profile"])->name('edit_profile');
     
-    Route::post('/postdogs', [PostDogController::class, "create"]);
-    Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"]);
-    Route::patch('/postdogs/{id}', [PostDogController::class, "edit"]);
+    Route::post('/postdogs', [PostDogController::class, "create"])->name('create_postdogs');
+    Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"])->name('delete_postdogs');
+    Route::patch('/postdogs/{id}', [PostDogController::class, "edit"])->name('update_postdogs');
 
-    Route::post('/postsitters', [PostSitterController::class, "create"]);
-    Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"]);
-    Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"]);
+    Route::post('/postsitters', [PostSitterController::class, "create"])->name('create_postsitters');
+    Route::delete('/postsitters/{id}', [PostSitterController::class, "destroy"])->name('delete_postsitters');
+    Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"])->name('update_postsitters');
     
-    Route::post('/logout', [UserController::class, "logout"]);
+    Route::post('/logout', [UserController::class, "logout"])->name('logout');
 });
 
 
