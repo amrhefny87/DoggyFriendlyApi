@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"])->name('update_postsitters');
     
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
+
+    Route::post('likePostDog', [LikeDogController::class, "likePostDog"])->name('likePostDog');
 });
 
 
