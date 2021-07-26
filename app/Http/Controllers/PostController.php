@@ -93,7 +93,7 @@ class PostController extends Controller
         if ($request->hasFile('image')){
             $event = Post::findOrFail($id);
             //Storage::delete('public/'.$event->image);
-            $post['image'] = $request->file('image')->update('img', 'public');
+            $post['image'] = $request->file('image')->store('img', 'public');
         }
         
         $post = Post::whereId($id);
