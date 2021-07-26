@@ -74,11 +74,13 @@ class PostDogController extends Controller
         return response()->json(PostDog::all(), 200);
     }
 
-    /* public function image($id){
-        $post = PostDog::find($id);
-        $image = Storage::disk('public')->url($post->image);
+    public function myPosts($id){
+        $user = User::find($id);
+        $myPostsDogs = $user->postDogs;
 
+        //buscar en la lista de los eventos aquellos id que coincidan con el id del evento del user loggeado.
 
-        return response()->json($image, 200);
-    } */
+        return response()->json($myPostsDogs, 200);
+        
+    }
 }

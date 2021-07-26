@@ -124,8 +124,8 @@ class PostController extends Controller
         return redirect()->route('home');
     }
 
-    public function myPosts($id){
-        $user = Auth::findOrFail($id);
+    public function myPosts(){
+        $user = Auth::user();
         $myPosts = $user->post;
 
 

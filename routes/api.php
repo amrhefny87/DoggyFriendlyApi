@@ -28,6 +28,8 @@ Route::post('/login', [UserController::class, "login"]);
 Route::get('/postdogs', [PostDogController::class, "index"]);
 Route::get('/postsitters', [PostSitterController::class, "index"]);
 
+Route::get('/myPosts/{id}', [PostDogController::class, "myPosts"])->name('myPosts');
+
 
 
 
