@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-            <p>hola</p>
+            <p>hola mundo</p>
     </body>
 </html>
