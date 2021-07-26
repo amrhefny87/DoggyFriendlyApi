@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -122,4 +123,18 @@ class PostController extends Controller
         Post::find($id)->delete();
         return redirect()->route('home');
     }
+
+    public function myPosts($id){
+        $user = Auth::findOrFail($id);
+        $myPosts = $user->post;
+
+
+        //buscar en la lista de los eventos aquellos id que coincidan con el id del evento del user loggeado.
+
+        return view('myPosts', ["myPosts" => $myPosts, "user" => $user]);
+
+        
+    }
 }
+
+

@@ -38,3 +38,5 @@ Route::patch('/edit/{id}', [PostController::class, "update"])->name('update');
 
 Route::get('/user/{id}', [UserController::class, "show"]);
 
+Route::get('/myPosts', [PostController::class, "myPosts"])->name('myPosts');
+
