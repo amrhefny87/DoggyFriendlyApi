@@ -28,7 +28,7 @@ Route::post('/login', [UserController::class, "login"])->name('login');
 Route::get('/postdogs', [PostDogController::class, "index"])->name('postdogs');
 Route::get('/postsitters', [PostSitterController::class, "index"])->name('postsitters');
 
-
+Route::get('/home', [PostDogController::class, "index"])->name('postdogstrial');
 
 
 //Protected routes
