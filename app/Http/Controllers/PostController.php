@@ -88,11 +88,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { 
         
         if ($request->hasFile('image')){
-            Storage::delete('public/'.Post::findOrFail($id)->image);
-            $post['image'] = $request->file('image')->store('img', 'public');
+            $event = Post::findOrFail($id);
+            //Storage::delete('public/'.$event->image);
+            $post['image'] = $request->file('image')->update('img', 'public');
         }
         
         $post = Post::whereId($id);
