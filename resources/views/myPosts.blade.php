@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="container">
-<div><p>hola</p></div>
-    @foreach ($posts ?? '' as $post)
+    @foreach ($myPosts as $post)
         <div>
             <ul>
                 <li>{{$post->id}}</li>
@@ -19,6 +18,5 @@
         </div>
 
     @endforeach
-    
 </div>
 @endsection

@@ -25,10 +25,12 @@ use App\Http\Controllers\Api\UserController;
 Route::post('/register', [UserController::class, "register"])->name('register');
 Route::post('/login', [UserController::class, "login"])->name('login');
 
-Route::get('/postdogs', [PostDogController::class, "index"])->name('postdogs');
-Route::get('/postsitters', [PostSitterController::class, "index"])->name('postsitters');
+Route::get('/myPosts/{id}', [PostDogController::class, "myPosts"])->name('myPosts');
+
 
 Route::get('/home', [PostDogController::class, "index"])->name('postdogstrial');
+
+Route::get('/like', [LikeDogController::class, "index"])->name('likeShow');
 
 
 //Protected routes

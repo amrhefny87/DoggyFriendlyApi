@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use App\Models\PostDog;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostDogController extends Controller
 {
@@ -38,6 +39,11 @@ class PostDogController extends Controller
 
         ]);
 
+        if ($request->hasFile('image')){
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+
+
         $post->save();
         //$user=User::find(Auth::id())->id;
         return response()->json(PostDog::all(), 200);
@@ -56,6 +62,11 @@ class PostDogController extends Controller
             "comments" => $request->comments,
             "image" => $request->image,
         ]);
+
+        if ($request->hasFile('image')){
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+        
         return response()->json(PostDog::all(), 200);
     }
 
@@ -63,5 +74,15 @@ class PostDogController extends Controller
     {
         PostDog::find($id)->delete();
         return response()->json(PostDog::all(), 200);
+    }
+
+    public function myPosts($id){
+        $user = User::find($id);
+        $myPostsDogs = $user->postDogs;
+
+        //buscar en la lista de los eventos aquellos id que coincidan con el id del evento del user loggeado.
+
+        return response()->json($myPostsDogs, 200);
+        
     }
 }

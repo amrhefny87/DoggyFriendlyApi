@@ -2,10 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PostDogController;
-use App\Http\Controllers\PostSitterController;
-
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\Api\UserController;
 
 
 /*
@@ -34,5 +32,11 @@ Route::post('/create', [App\Http\Controllers\PostController::class, 'store'])->n
 
 Route::get('/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('delete');
 
+Route::get('/edit/{id}', [PostController::class, "edit"])->name('edit');
+
+Route::patch('/edit/{id}', [PostController::class, "update"])->name('update');
+
 Route::get('/user/{id}', [UserController::class, "show"]);
+
+Route::get('/myPosts/{id}', [PostController::class, "myPosts"])->name('myPosts');
 

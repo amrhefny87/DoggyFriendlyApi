@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Hash;
 
 class LikeDogController extends Controller
 {
+    public function index() {
+        return response()->json(User::all(), 200);
+    }
+    
     public function likePostDog ($id) {
         $like = LikeDog::create([
             'post_id' => 2,
