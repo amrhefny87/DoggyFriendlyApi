@@ -90,11 +90,10 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     { 
-        
         if ($request->hasFile('image')){
             $event = Post::findOrFail($id);
-            //Storage::delete('public/'.$event->image);
-            $post['image'] = $request->file('image')->store('img', 'public');
+            Storage::delete('public/'.$event->image);
+            $newImage = $request->file('image')->store('img', 'public');
         }
         
         $post = Post::whereId($id);
@@ -105,11 +104,11 @@ class PostController extends Controller
             "date" => $request->date,
             "name" => $request->name,
             "comments" => $request->comments,
-            "image" => $request->image,
+            "image" => $newImage,
         ]);
-        
-    
+
         return redirect()->route('home');
+
     }
 
     /**
@@ -128,8 +127,6 @@ class PostController extends Controller
         $user = Auth::user();
         $myPosts = $user->post;
 
-
-        //buscar en la lista de los eventos aquellos id que coincidan con el id del evento del user loggeado.
 
         return view('myPosts', ["myPosts" => $myPosts, "user" => $user]);
 

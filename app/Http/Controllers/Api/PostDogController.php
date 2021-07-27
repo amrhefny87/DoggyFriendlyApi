@@ -78,8 +78,6 @@ class PostDogController extends Controller
         $user = User::find($id);
         $myPostsDogs = $user->postDogs;
 
-        //buscar en la lista de los eventos aquellos id que coincidan con el id del evento del user loggeado.
-
         return response()->json($myPostsDogs, 200);
         
     }
