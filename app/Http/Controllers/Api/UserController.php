@@ -53,10 +53,12 @@ class UserController extends Controller
         }
 
         $token = $user->createToken('token')->plainTextToken;
+        
 
         $response = [
             'user'=>$user,
             'token'=>$token,
+            
         ];
 
         return response($response, 201);
@@ -96,5 +98,19 @@ class UserController extends Controller
         $user = User::find($id);
 
         return response()->json($user, 200);
+    }
+
+    public function authuser(Request $request){
+        //$user = $request->user();
+        $user=auth()->user();
+        return response()->json([
+            'id'=> $user->id,
+            'name'=> $user->name,
+            'email'=>$user->emaill,
+            'image'=> $user->image,
+            'direction'=> $user->direction,
+            'pet_name'=> $user->pet_name,
+            'about_us'=> $user->about_us,
+        ], 200);
     }
 }

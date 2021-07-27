@@ -14,7 +14,11 @@ class PostDogController extends Controller
      */
     public function index()
     {
-        //
+        // return response()->json(PostDog::all(), 200);
+        $posts =PostDog::all();
+
+        return view('home', ['postsdogs'=>$posts]);
+        
     }
 
     /**
