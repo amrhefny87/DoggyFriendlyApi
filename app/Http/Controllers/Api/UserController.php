@@ -106,7 +106,7 @@ class UserController extends Controller
         return response()->json([
             'id'=> $user->id,
             'name'=> $user->name,
-            'email'=>$user->emaill,
+            'email'=>$user->email,
             'image'=> $user->image,
             'direction'=> $user->direction,
             'pet_name'=> $user->pet_name,
