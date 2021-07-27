@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostDogController;
 use App\Http\Controllers\Api\PostSitterController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\LikeDogController;
 
 
 
@@ -35,6 +36,7 @@ Route::get('/like', [LikeDogController::class, "index"])->name('likeShow');
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/like', [LikeDogController::class, "index"])->name('likeShow');
     Route::get('/users', [UserController::class, "index"])->name('users');
     Route::get('/user/{id}', [UserController::class, "show"])->name('user');
     Route::patch('/users/{id}', [UserController::class, "edit_profile"])->name('edit_profile');
@@ -49,7 +51,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
 
-    Route::post('likePostDog', [LikeDogController::class, "likePostDog"])->name('likePostDog');
+    Route::get('/likesDogs', [LikeDogController::class, "index"])->name('likeDogs');
+    Route::post('/likePostDog', [LikeDogController::class, "likePostDog"])->name('likePostDog');
 });
 
 
