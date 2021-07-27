@@ -78,5 +78,15 @@ class PostSitterController extends Controller
         PostSitter::find($id)->delete();
         return response()->json(PostSitter::all(), 200);
     }
+
+    public function myPostsSitters(){
+
+        $user=auth()->user();
+    
+        $myPostsSitters = $user->postSitters;
+
+        return response()->json($myPostsSitters, 200);
+        
+    }
     
 }

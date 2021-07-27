@@ -77,8 +77,11 @@ class PostDogController extends Controller
         return response()->json(PostDog::all(), 200);
     }
 
-    public function myPosts($id){
-        $user = User::find($id);
+    public function myPostsDogs(){
+
+        //$user = auth()->user();
+        $user = User::find(1);
+    
         $myPostsDogs = $user->postDogs;
 
         return response()->json($myPostsDogs, 200);
