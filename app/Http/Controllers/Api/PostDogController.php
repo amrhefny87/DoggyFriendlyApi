@@ -76,4 +76,16 @@ class PostDogController extends Controller
         PostDog::find($id)->delete();
         return response()->json(PostDog::all(), 200);
     }
+
+    public function myPostsDogs(){
+
+        //$user = auth()->user();
+        $user = User::find(1);
+    
+        $myPostsDogs = $user->postDogs;
+
+        return response()->json($myPostsDogs, 200);
+        
+    }
+
 }

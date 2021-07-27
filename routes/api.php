@@ -30,6 +30,9 @@ Route::get('/postdogs', [PostDogController::class, "index"])->name('postdogs');
 Route::get('/postsitters', [PostSitterController::class, "index"])->name('postsitters');
 
 
+//Route::get('/my_posts_dogs', [PostDogController::class, "myPostsDogs"])->name('myPostsDogs');
+
+
 //Route::get('/authuser', AuthUserController::class)->name('authuser');
 
 //Protected routes
@@ -38,6 +41,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users', [UserController::class, "index"])->name('users');
     Route::get('/user/{id}', [UserController::class, "show"])->name('user');
     Route::patch('/users/{id}', [UserController::class, "edit_profile"])->name('edit_profile');
+    Route::get('/my_posts_dogs', [PostDogController::class, "myPostsDogs"])->name('myPostsDogs');
+    Route::get('/my_posts_sitters', [PostSitterController::class, "myPostsSitters"])->name('myPostsSitters');
     
     
     Route::post('/postdogs', [PostDogController::class, "create"])->name('create_postdogs');
