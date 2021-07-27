@@ -97,4 +97,17 @@ class UserController extends Controller
 
         return response()->json($user, 200);
     }
+
+    public function authuser(Request $request){
+        $user = $request->user();
+        return response()->json([
+            'id'=> $user->id,
+            'name'=> $user->name,
+            'email'=>$user->emaill,
+            'image'=> $user->image,
+            'direction'=> $user->direction,
+            'pet_name'=> $user->pet_name,
+            'about_us'=> $user->about_us,
+        ], 200);
+    }
 }

@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users', [UserController::class, "index"])->name('users');
     Route::get('/user/{id}', [UserController::class, "show"])->name('user');
     Route::patch('/users/{id}', [UserController::class, "edit_profile"])->name('edit_profile');
+    Route::get('/authuser', [UserController::class, "authuser"])->name('authuser');
     
     Route::post('/postdogs', [PostDogController::class, "create"])->name('create_postdogs');
     Route::delete('/postdogs/{id}', [PostDogController::class, "destroy"])->name('delete_postdogs');
