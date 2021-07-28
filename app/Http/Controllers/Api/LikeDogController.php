@@ -18,13 +18,14 @@ class LikeDogController extends Controller
         return response()->json(LikeDog::all(), 200);
     }
     
-    public function likePostDog (Request $request) {
+    public function createLikeDog ($id) {
         $like = LikeDog::create([
-            "post_id" => $request->id,
-            "user_id" => auth()->user()->id
+            "post_id" => $id,
+            "user_id" => User::find(Auth::id())->id
         ]);
+        // $like->save();
         return response()->json(LikeDog::all(), 200);
     }
 
-    
+
 }

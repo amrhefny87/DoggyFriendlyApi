@@ -29,14 +29,15 @@ Route::post('/login', [UserController::class, "login"])->name('login');
 Route::get('/myPosts/{id}', [PostDogController::class, "myPosts"])->name('myPosts');
 
 
-Route::get('/home', [PostDogController::class, "index"])->name('postdogstrial');
+Route::get('/postdogs', [PostDogController::class, "index"])->name('postdogs');
 
-Route::get('/like', [LikeDogController::class, "index"])->name('likeShow');
+//  Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
+// Route::post('/likesdogs', [LikeDogController::class, "createLikeDog"])->name('createLikeDog');
 
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/like', [LikeDogController::class, "index"])->name('likeShow');
+    
     Route::get('/users', [UserController::class, "index"])->name('users');
     Route::get('/user/{id}', [UserController::class, "show"])->name('user');
     Route::patch('/users/{id}', [UserController::class, "edit_profile"])->name('edit_profile');
@@ -51,8 +52,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
 
-    Route::get('/likesDogs', [LikeDogController::class, "index"])->name('likeDogs');
-    Route::post('/likePostDog', [LikeDogController::class, "likePostDog"])->name('likePostDog');
+    Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
+    Route::post('/likesdogs', [LikeDogController::class, "createLikeDog"])->name('createLikeDog');
 });
 
 
