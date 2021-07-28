@@ -21,6 +21,7 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $fields['name'],
+            'image' => "https://us.123rf.com/450wm/glebstock/glebstock1507/glebstock150700212/42190907-silueta.jpg?ver=6",
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
