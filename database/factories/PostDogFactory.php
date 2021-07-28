@@ -27,6 +27,7 @@ class PostDogFactory extends Factory
             'image' => "https://www.collinsdictionary.com/images/thumb/dog_230497594_250.jpg?version=4.0.166",
             'date' => $this->faker->dateTime(),
             'name' => $this->faker-> name(),
+            'user_id' => "1",
             'comments' => $this->faker->realText()
         ];
     }

@@ -21,6 +21,7 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $fields['name'],
+            'image' => "https://us.123rf.com/450wm/glebstock/glebstock1507/glebstock150700212/42190907-silueta.jpg?ver=6",
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
@@ -106,11 +107,24 @@ class UserController extends Controller
         return response()->json([
             'id'=> $user->id,
             'name'=> $user->name,
+            'password'=> $user->password,
             'email'=>$user->email,
             'image'=> $user->image,
             'direction'=> $user->direction,
             'pet_name'=> $user->pet_name,
             'about_us'=> $user->about_us,
         ], 200);
+    }
+    public function upload(Request $request) {
+        try{
+            if($request->hasFile("image")) {
+                $file = $request->file("image")->store("img", "public");
+                return $file;
+            }
+        }catch(\Exception $e){
+            return response()->json([
+                "message"=>$e->getMessage()
+            ]);
+        }
     }
 }
