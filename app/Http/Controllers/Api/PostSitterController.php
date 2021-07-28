@@ -54,11 +54,11 @@ class PostSitterController extends Controller
 
     public function edit (Request $request, $id) 
     {
-        if ($request->hasFile('image')){
+        /* if ($request->hasFile('image')){
             $event = PostSitter::findOrFail($id);
             Storage::delete('public/'.$event->image);
             $newImage = $request->file('image')->store('img', 'public');
-        }
+        } */
         
         $post = PostSitter::whereId($id);
     
@@ -68,7 +68,7 @@ class PostSitterController extends Controller
             "date" => $request->date,
             "name" => $request->name,
             "comments" => $request->comments,
-            "image" => $newImage,
+            "image" => $request->image,
         ]);
         return response()->json(PostSitter::all(), 200);
     }

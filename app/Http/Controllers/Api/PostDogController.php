@@ -51,11 +51,11 @@ class PostDogController extends Controller
 
     public function edit (Request $request, $id) 
     {
-        if ($request->hasFile('image')){
+        /* if ($request->hasFile('image')){
             $event = PostDog::findOrFail($id);
             Storage::delete('public/'.$event->image);
             $newImage = $request->file('image')->store('img', 'public');
-        }
+        } */
         
         $post = PostDog::whereId($id);
         
@@ -65,7 +65,7 @@ class PostDogController extends Controller
             "date" => $request->date,
             "name" => $request->name,
             "comments" => $request->comments,
-            "image" => $newImage,
+            "image" => $request->image,
         ]);
 
         return response()->json(PostDog::all(), 200);
