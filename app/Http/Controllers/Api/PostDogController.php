@@ -76,6 +76,18 @@ class PostDogController extends Controller
         PostDog::find($id)->delete();
         return response()->json(PostDog::all(), 200);
     }
+    public function upload(Request $request) {
+        try{
+            if($request->hasFile("image")) {
+                $file = $request->file("image")->store("img", "public");
+                return $file;
+            }
+        }catch(\Exception $e){
+            return response()->json([
+                "message"=>$e->getMessage()
+            ]);
+        }
+    }
 
     public function myPostsDogs(){
 
