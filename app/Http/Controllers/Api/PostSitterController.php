@@ -90,4 +90,15 @@ class PostSitterController extends Controller
             ]);
         }
     }
+
+    public function myPostsSitters(){
+
+        $user=auth()->user();
+    
+        $myPostsSitters = $user->postSitters;
+
+        return response()->json($myPostsSitters, 200);
+        
+    }
+    
 }

@@ -50,10 +50,10 @@ class User extends Authenticatable
     ];
 
     public function postDogs(){
-        return $this->hasOne(PostDog::class);
+        return $this->hasMany(PostDog::class);
     }
 
     public function postSitters(){
-        return $this->hasOne(PostSitter::class);
+        return $this->hasMany(PostSitter::class);
     }
 }

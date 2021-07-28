@@ -88,4 +88,16 @@ class PostDogController extends Controller
             ]);
         }
     }
+
+    public function myPostsDogs(){
+
+        //$user = auth()->user();
+        $user = User::find(1);
+    
+        $myPostsDogs = $user->postDogs;
+
+        return response()->json($myPostsDogs, 200);
+        
+    }
+
 }
