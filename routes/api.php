@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
 
     Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
-    Route::get('/mylikesdogs', [LikeDogController::class, "showMyLikes"])->name('myLikes');
+    Route::get('/likesdogs/{id}', [LikeDogController::class, "showMyLikes"])->name('myLikes');
     Route::post('/likesdogs', [LikeDogController::class, "createLikeDog"])->name('createLikeDog');
     Route::delete('/likesdogs/{id}', [LikeDogController::class, "deleteLikeDog"])->name('deleteLikeDog');
     

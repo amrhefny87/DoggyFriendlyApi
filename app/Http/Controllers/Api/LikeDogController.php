@@ -35,9 +35,9 @@ class LikeDogController extends Controller
 
     // }
 
-    public function showMyLikes (Request $request) {
-        $likes = LikeDog::find($request->id);
-        //$likes = LikeDog::where('post_id',"=",$request->id);
+    public function showMyLikes ($id) {
+        //$likes = LikeDog::find($request->id);
+        $likes = LikeDog::where('post_id',"=",$id)->count();
         //     $likes = LikeDog::where('user_id',"=",$id);
         return response()->json($likes, 200);
     
