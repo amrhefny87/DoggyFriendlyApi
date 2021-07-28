@@ -43,16 +43,21 @@ class PostDogController extends Controller
             $post['image'] = $request->file('image')->store('img', 'public');
         }
 
-
         $post->save();
         //$user=User::find(Auth::id())->id;
         return response()->json(PostDog::all(), 200);
         //return ($user);
     }
 
-    public function edit (Request $request, $id) {
-        $post = PostDog::whereId($id);
+    public function edit (Request $request, $id) 
+    {
+        /* if ($request->hasFile('image')){
+            $event = PostDog::findOrFail($id);
+            Storage::delete('public/'.$event->image);
+            $newImage = $request->file('image')->store('img', 'public');
+        } */
         
+        $post = PostDog::whereId($id);
         
         $post->update([
             "title" => $request->title,
@@ -76,11 +81,25 @@ class PostDogController extends Controller
         return response()->json(PostDog::all(), 200);
     }
 
-    public function myPosts($id){
-        $user = User::find($id);
-        $myPostsDogs = $user->postDogs;
+    
+    public function upload(Request $request) {
+        try{
+            if($request->hasFile("image")) {
+                $file = $request->file("image")->store("img", "public");
+                return $file;
+            }
+        }catch(\Exception $e){
+            return response()->json([
+                "message"=>$e->getMessage()
+            ]);
+        }
+    }
 
-        //buscar en la lista de los eventos aquellos id que coincidan con el id del evento del user loggeado.
+    public function myPostsDogs(){
+
+        $user = auth()->user();
+    
+        $myPostsDogs = $user->postDogs;
 
         return response()->json($myPostsDogs, 200);
         

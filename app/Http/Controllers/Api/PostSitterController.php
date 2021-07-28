@@ -7,6 +7,7 @@ use App\Models\PostSitter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostSitterController extends Controller
 {
@@ -40,12 +41,25 @@ class PostSitterController extends Controller
             
 
         ]);
+
+        if ($request->hasFile('image')){
+            $post['image'] = $request->file('image')->store('img', 'public');
+        }
+
         $post->save();
+
         return response()->json(PostSitter::all(), 200);
         
     }
 
-    public function edit (Request $request, $id) {
+    public function edit (Request $request, $id) 
+    {
+        /* if ($request->hasFile('image')){
+            $event = PostSitter::findOrFail($id);
+            Storage::delete('public/'.$event->image);
+            $newImage = $request->file('image')->store('img', 'public');
+        } */
+        
         $post = PostSitter::whereId($id);
     
         $post->update([
@@ -63,6 +77,28 @@ class PostSitterController extends Controller
     {
         PostSitter::find($id)->delete();
         return response()->json(PostSitter::all(), 200);
+    }
+    public function upload(Request $request) {
+        try{
+            if($request->hasFile("image")) {
+                $file = $request->file("image")->store("img", "public");
+                return $file;
+            }
+        }catch(\Exception $e){
+            return response()->json([
+                "message"=>$e->getMessage()
+            ]);
+        }
+    }
+
+    public function myPostsSitters(){
+
+        $user=auth()->user();
+    
+        $myPostsSitters = $user->postSitters;
+
+        return response()->json($myPostsSitters, 200);
+        
     }
     
 }
