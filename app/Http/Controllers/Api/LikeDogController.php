@@ -18,14 +18,35 @@ class LikeDogController extends Controller
         return response()->json(LikeDog::all(), 200);
     }
     
-    public function createLikeDog ($id) {
+    public function createLikeDog (Request $request) {
         $like = LikeDog::create([
-            "post_id" => $id,
+            "post_id" => $request->id,
             "user_id" => User::find(Auth::id())->id
         ]);
         // $like->save();
         return response()->json(LikeDog::all(), 200);
     }
 
+    // public function showMyLikes ($id) {
+    //     //$likes = LikeDog::find($id);
+    //     //$likes = LikeDog::where('user_id',"=",User::find(Auth::id())->id);
+    //     $likes = LikeDog::where('user_id',"=",$id);
+    //     return response()->json($likes, 200);
+
+    // }
+
+    public function showMyLikes (Request $request) {
+        $likes = LikeDog::find($request->id);
+        //$likes = LikeDog::where('post_id',"=",$request->id);
+        //     $likes = LikeDog::where('user_id',"=",$id);
+        return response()->json($likes, 200);
+    
+    }
+
+    public function deleteLikeDog($id) {
+        LikeDog::where('post_id',"=",$id)->where('user_id',"=",User::find(Auth::id())->id)->delete();
+
+        return response()->json(LikeDog::all(), 200);
+    }
 
 }
