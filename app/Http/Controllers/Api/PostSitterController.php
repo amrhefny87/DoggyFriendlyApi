@@ -53,13 +53,7 @@ class PostSitterController extends Controller
     }
 
     public function edit (Request $request, $id) 
-    {
-        /* if ($request->hasFile('image')){
-            $event = PostSitter::findOrFail($id);
-            Storage::delete('public/'.$event->image);
-            $newImage = $request->file('image')->store('img', 'public');
-        } */
-        
+    {        
         $post = PostSitter::whereId($id);
     
         $post->update([

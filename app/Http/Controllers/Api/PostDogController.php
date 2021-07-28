@@ -51,12 +51,6 @@ class PostDogController extends Controller
 
     public function edit (Request $request, $id) 
     {
-        /* if ($request->hasFile('image')){
-            $event = PostDog::findOrFail($id);
-            Storage::delete('public/'.$event->image);
-            $newImage = $request->file('image')->store('img', 'public');
-        } */
-        
         $post = PostDog::whereId($id);
         
         $post->update([
