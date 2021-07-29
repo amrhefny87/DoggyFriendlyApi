@@ -4,6 +4,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LikeDogController;
+use App\Http\Controllers\Api\LikeSitterController;
 use App\Http\Controllers\Api\PostDogController;
 use App\Http\Controllers\Api\PostSitterController;
 use App\Http\Controllers\Api\UserController;
@@ -60,10 +61,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
 
     Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
-    Route::get('/likesdogs/{id}', [LikeDogController::class, "showMyLikes"])->name('myLikes');
+    Route::get('/likesdogs/{id}', [LikeDogController::class, "showMyLikes"])->name('myLikesDogs');
     Route::post('/likesdogs', [LikeDogController::class, "createLikeDog"])->name('createLikeDog');
     Route::delete('/likesdogs/{id}', [LikeDogController::class, "deleteLikeDog"])->name('deleteLikeDog');
     
+    Route::get('/likessitters', [LikeSitterController::class, "index"])->name('likes');
+    Route::get('/likessitters/{id}', [LikeSitterController::class, "showMyLikes"])->name('myLikesSitters');
+    Route::post('/likessitters', [LikeSitterController::class, "createLikeSitter"])->name('createLikeSitter');
+    Route::delete('/likessitters/{id}', [LikeSitterController::class, "deleteLikeSitter"])->name('deleteLikeSitter');
 });
 
 
