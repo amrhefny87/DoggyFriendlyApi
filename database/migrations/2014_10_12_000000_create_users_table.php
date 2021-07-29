@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('direction')->nullable();
             $table->string('pet_name')->nullable();
             $table->string('about_us')->nullable();
+            $table->string('phone')->nullable();
             
         });
     }

@@ -27,7 +27,8 @@ class User extends Authenticatable
         'direction',
         'image',
         'pet_name',
-        'about_us'
+        'about_us',
+        'phone',
 
     ];
 
