@@ -3,6 +3,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\LikeDogController;
 use App\Http\Controllers\Api\PostDogController;
 use App\Http\Controllers\Api\PostSitterController;
 use App\Http\Controllers\Api\UserController;
@@ -35,6 +36,8 @@ Route::get('/postsitters', [PostSitterController::class, "index"])->name('postsi
 
 //Route::get('/authuser', AuthUserController::class)->name('authuser');
 
+
+
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/authuser', [UserController::class, "authuser"])->name('authuser');
@@ -55,6 +58,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::patch('/postsitters/{id}', [PostSitterController::class, "edit"])->name('update_postsitters');
     
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
+
+    Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
+    Route::get('/likesdogs/{id}', [LikeDogController::class, "showMyLikes"])->name('myLikes');
+    Route::post('/likesdogs', [LikeDogController::class, "createLikeDog"])->name('createLikeDog');
+    Route::delete('/likesdogs/{id}', [LikeDogController::class, "deleteLikeDog"])->name('deleteLikeDog');
+    
 });
 
 

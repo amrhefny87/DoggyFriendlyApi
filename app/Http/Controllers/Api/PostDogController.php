@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\LikeDog;
 use App\Models\PostDog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
