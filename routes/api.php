@@ -31,6 +31,9 @@ Route::get('/postdogs', [PostDogController::class, "index"])->name('postdogs');
 Route::get('/postsitters', [PostSitterController::class, "index"])->name('postsitters');
 
 
+Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
+Route::get('/likesdogs/{id}', [LikeDogController::class, "showMyLikes"])->name('myLikes');
+    
 //Route::get('/my_posts_dogs', [PostDogController::class, "myPostsDogs"])->name('myPostsDogs');
 
 
@@ -59,8 +62,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     Route::post('/logout', [UserController::class, "logout"])->name('logout');
 
-    Route::get('/likesdogs', [LikeDogController::class, "index"])->name('likes');
-    Route::get('/likesdogs/{id}', [LikeDogController::class, "showMyLikes"])->name('myLikes');
     Route::post('/likesdogs', [LikeDogController::class, "createLikeDog"])->name('createLikeDog');
     Route::delete('/likesdogs/{id}', [LikeDogController::class, "deleteLikeDog"])->name('deleteLikeDog');
     
