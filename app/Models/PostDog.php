@@ -29,4 +29,6 @@ class PostDog extends Model
     public function likeDogs(){
         return $this->hasMany(LikeDog::class);
     }
+
+    
 }
