@@ -92,6 +92,7 @@ class UserController extends Controller
             "direction" => $request->direction,
             "pet_name" => $request->pet_name,
             "about_us" => $request->about_us,
+            "phone" => $request->phone,
         ]);
         return response()->json(User::all(), 200);
     }
@@ -114,6 +115,7 @@ class UserController extends Controller
             'direction'=> $user->direction,
             'pet_name'=> $user->pet_name,
             'about_us'=> $user->about_us,
+            'phone'=> $user->phone,
         ], 200);
     }
     public function upload(Request $request) {

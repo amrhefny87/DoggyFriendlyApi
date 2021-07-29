@@ -27,6 +27,7 @@ class AuthUserController extends Controller
             'direction'=> $user->direction,
             'pet_name'=> $user->pet_name,
             'about_us'=> $user->about_us,
+            'phone'=> $user->phone,
         ], 200);
     }
 }
