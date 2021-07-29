@@ -1,62 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# <img src="src\assets\doggyLogo.png" alt="drawing" style="width:50px;"/>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### *DoggyF, el couchsurfing para perros* 
+<br>
 
-## About Laravel
+## VISTAS
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![image](https://user-images.githubusercontent.com/82060703/127542298-150922e8-9320-4821-9ecf-0e3105936109.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![image](https://user-images.githubusercontent.com/82060703/127542470-3e50393c-a45c-42f9-b28a-2f8457c4491b.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![image](https://user-images.githubusercontent.com/82060703/127542541-97975a8a-3a54-4f47-b029-9522cd8a91fb.png)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Contexto del proyecto 🌱
+Desarrollar una startup tecnológica y su aplicación Web MVP.
+Para ello buscaremos resolver un problema actual mediante una solución Web, prepararemos un Pitch para la presentación a posibles inversores, diseñaremos un prototipo, un RoadMap y desarrollaremos el producto mínimo viable.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Problema :collision:
+DoggyF nace debido a la falta de iniciativas altruistas entre doggy-lovers. 
 
-### Premium Partners
+## Características generales 🔭
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+DoggyF es una comunidad de dueños de perros y paseadores, de uso totalmente gratuito y en la que el intercambio es la base.
 
-## Contributing
+En DoggyF los usuarios pueden  publicar anuncios y contactar con otros usuarios para proceder en el intercambio.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+La aplicación tiene características de Red Social y de Gestión de contenidos. También tiene herramientas de apoyo a causas sociales.
 
-## Code of Conduct
+## Requisitos: 📝
+- Debe estar en servidor aunque esté en desarrollo
+- Debe estar testeada
+- Debe usar Laravel
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Instala los repositorios ⚡
 
-## Security Vulnerabilities
+- Clone repositorio Laravel https://github.com/MuyDiversos/DoggyF.git
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Clone repositorio Vue https://github.com/MuyDiversos/Vue-DoggyF.git
 
-## License
+- Necesitamos también crear una base de datos con el nombre de "doggyf" en phpMyAdmin en local, con las credenciales siguientes: user : root; password : "".
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Instala vue ⚡⚡
+- npm install
+- npm install axios
+- npm install cli-spinners
+- vue add router
+- vue add vuex
+
+## Instala laravel ⚡⚡⚡
+- composer require laravel/sanctum
+- php artisan vendor:publish--provider="Laravel\Sanctum\SanctumServiceProvider" 
+- php artisan migrate:fresh --seed
+- php artisan storage:link
+
+## Características de la app :dog: :dog: 
+Desde la Home se puede acceder a los anuncios publicados de perros que necesitan ser cuidados (Dogs) o de personas que cuidan a perros (Sitters). 
+
+Al visualizar un anuncio, el usuario puede tener más información y contactar con la persona que lo publicó, accediendo a su perfil. Es posible también valorar el perfil de otro usuario mediante el sistema de likes.
+
+El usuario que esté registrado y logueado podrá publicar cualquier uno de los dos tipos de anuncios, además de poder editar su perfil, añadiendo más informaciones y fotos de su perro.
+
+El usuario tiene además la opción de visualizar, editar y borrar sus anuncios publicados.
+
+## Miembros del equipo de desarrollo 👯
+- Abdulha Idrees
+- Amr Hefny
+- Cris Mouta
+- Martín Madridejos
+- Snezhanna Stefanova
+- Thierno Diallo
+
+## Herramientas y tecnologías utilizadas :airplane: :rocket:
+- HTML5
+- CSS
+- Bootstrap
+- PHP8
+- MySQL
+- Visual Studio Code
+- XAMPP
+- Laravel
+- Javascript
+- Vue
+- Vuex
+- Trello
+- Miro
+- Figma
+ 
