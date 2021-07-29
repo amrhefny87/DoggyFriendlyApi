@@ -23,17 +23,11 @@ class LikeDogController extends Controller
             "post_id" => $request->id,
             "user_id" => User::find(Auth::id())->id
         ]);
-        // $like->save();
+        
         return response()->json(LikeDog::all(), 200);
     }
 
-    // public function showMyLikes ($id) {
-    //     //$likes = LikeDog::find($id);
-    //     //$likes = LikeDog::where('user_id',"=",User::find(Auth::id())->id);
-    //     $likes = LikeDog::where('user_id',"=",$id);
-    //     return response()->json($likes, 200);
-
-    // }
+    
 
     public function showMyLikes ($id) {
         //$likes = LikeDog::find($request->id);
