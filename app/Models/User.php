@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\PostDog;
+use App\Models\LikeDog;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -55,5 +56,9 @@ class User extends Authenticatable
 
     public function postSitters(){
         return $this->hasMany(PostSitter::class);
+    }
+
+    public function likeDogs(){
+        return $this->hasMany(LikeDog::class);
     }
 }

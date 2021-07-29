@@ -72,18 +72,6 @@ class PostSitterController extends Controller
         PostSitter::find($id)->delete();
         return response()->json(PostSitter::all(), 200);
     }
-    public function upload(Request $request) {
-        try{
-            if($request->hasFile("image")) {
-                $file = $request->file("image")->store("img", "public");
-                return $file;
-            }
-        }catch(\Exception $e){
-            return response()->json([
-                "message"=>$e->getMessage()
-            ]);
-        }
-    }
 
     public function myPostsSitters(){
 
