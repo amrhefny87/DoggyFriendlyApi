@@ -1,5 +1,3 @@
-# <img src="src\assets\doggyLogo.png" alt="drawing" style="width:50px;"/>
-
 ### *DoggyF, el couchsurfing para perros* 
 <br>
 
