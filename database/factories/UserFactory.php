@@ -26,11 +26,12 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'image' => "https://us.123rf.com/450wm/glebstock/glebstock1507/glebstock150700212/42190907-silueta.jpg?ver=6",
+            'image' => "https://img.icons8.com/pastel-glyph/2x/person-male--v3.png",
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'pet_name' => $this->faker->company(),
             'direction' => $this->faker->streetName(),
+            'phone' => $this->faker->phoneNumber()
             
         ];
     }
